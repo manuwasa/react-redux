@@ -2,22 +2,24 @@ import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
+import { actions } from "./store";
+
 function App() {
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
 
   const increment = () => {
-    dispatch({ type: "INC" });
+    dispatch(actions.increment());
   };
   const decrement = () => {
-    dispatch({ type: "DEC" });
+    dispatch(actions.decrement());
   };
   const addBy = (value) => {
-    dispatch({ type: "ADD", payload: value });
+    dispatch(actions.addBy(value));
   };
   const reset = () => {
-    dispatch({ type: "RES", payload: 0 });
+    dispatch(actions.reset());
   };
 
   const handleInput = (e) => {
